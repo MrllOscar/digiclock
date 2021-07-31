@@ -1,0 +1,115 @@
+body{
+  margin: 0;
+  background: #222;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+ 
+.digi{
+  display: flex;
+}
+
+.time{
+  height: 200px;
+  width: 100px;
+  position: relative;
+  margin: 0 15px;
+}
+
+.up,.down,.mid{
+  height: 2.5px;
+  width: 90px;
+}
+.lup,.ldown,.rup,.rdown{
+  height: 90px;
+  width: 2.5px;
+}
+.down{
+  bottom: 0;
+  left:5px;
+  right:5px
+}
+.mid{
+  bottom:50%;
+  top:50%;
+  left:5px;
+  right:5px
+}
+.up{
+  top:0;
+  left:5px;
+  right:5px
+}
+.rup{
+  right:0;
+  top: 5px;
+}
+.rdown{
+  right:0;
+  bottom:5px;
+}
+.lup{
+  left: 0;
+  top: 5px;
+}
+.ldown{
+  left: 0;
+  bottom: 5px;
+}
+.line{
+  position: absolute;
+  background: #5F5;
+  box-shadow: 1px 1px 3px #0F0;
+}
+/*
+.mk1,.mk2,.mk3,.mk4,.mk5,.mk6,.mk7,.mk8,.mk9,.mk0{
+  width: 100px;
+  height: 100px;
+  background: url('num3.png');
+}
+.cc{
+  width: 50px;
+  height: 100px;
+  background: url('num3.png');
+  background-position: right;
+  animation: colon 1s infinite;
+}
+@keyframes colon {
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+.mk1{
+  background-position: -100px;
+}
+.mk2{
+  background-position: -200px;
+}
+.mk3{
+  background-position: -300px;
+}
+.mk4{
+  background-position: -400px;
+}
+.mk5{
+  background-position: -500px;
+}
+.mk6{
+  background-position: -600px;
+}
+.mk7{
+  background-position: -700px;
+}
+.mk8{
+  background-position: -800px;
+}
+.mk9{
+  background-position: -900px;
+} */

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="digi.css">
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+
+  .bgimg{
+    background-image: url(./bomb.png);
+    width: 1100px;
+    height: 733px;
+    background-size: cover;
+  }
+
+
+  #clock{
+  width:370px;
+  padding:40px;
+  margin:23% 33%;
+  position:relative;
+}
+
+#clock:after{
+  content:'';
+  position:absolute;
+  width:400px;
+  height:20px;
+  border-radius:100%;
+  left:50%;
+  margin-left:-200px;
+  bottom:2px;
+  z-index:-1;
+}
+
+
+#clock .display{
+  text-align:center;
+  padding: 40px 20px 20px;
+  border-radius:6px;
+  position:relative;
+  height: 54px;
+}
+/* 轉變效果 */
+.digi div{
+  text-align:left;
+  position:relative;
+  width: 28px;
+  height:50px;
+  display:inline-block;
+  margin:0 4px;
+}
+
+.digi div span{
+  background: #0D0;
+  box-shadow:0 0 10px 5px #2A2;
+  opacity:0;
+  position:absolute;
+
+  -webkit-transition:0.25s;
+  -moz-transition:0.25s;
+  transition:0.25s;
+}
+
+
+
+.digi div span:before,.digi div span:after{
+  content:'';
+  position:absolute;
+  width:0;
+  height:0;
+  border:5px solid transparent;
+}
+
+.digi .d1{  height:5px;width:16px;top:0;left:6px;}
+.digi .d1:before{	border-width:0 5px 5px 0;border-right-color:#0D0;;left:-5px;}
+.digi .d1:after{  border-width:0 0 5px 5px;border-left-color:#0D0;;right:-5px;}
+
+.digi .d2{  height:5px;width:16px;top:24px;left:6px;}
+.digi .d2:before{ border-width:3px 4px 2px;border-right-color:#0D0;;left:-8px;}
+.digi .d2:after{  border-width:3px 4px 2px;border-left-color:#0D0;;right:-8px;}
+
+.digi .d3{  height:5px;width:16px;top:48px;left:6px;}
+.digi .d3:before{ border-width:5px 5px 0 0;border-right-color:#0D0;;left:-5px;}
+.digi .d3:after{  border-width:5px 0 0 5px;border-left-color:#0D0;;right:-5px;}
+
+.digi .d4{  width:5px;height:14px;top:7px;left:0;}
+.digi .d4:before{ border-width:0 5px 5px 0;border-bottom-color:#0D0;;top:-5px;}
+.digi .d4:after{  border-width:0 0 5px 5px;border-left-color:#0D0;;bottom:-5px;}
+
+.digi .d5{  width:5px;height:14px;top:7px;right:0;}
+.digi .d5:before{ border-width:0 0 5px 5px;border-bottom-color:#0D0;;top:-5px;}
+.digi .d5:after{  border-width:5px 0 0 5px;border-top-color:#0D0;;bottom:-5px;}
+
+.digi .d6{  width:5px;height:14px;top:32px;left:0;}
+.digi .d6:before{ border-width:0 5px 5px 0;border-bottom-color:#0D0;;top:-5px;}
+.digi .d6:after{  border-width:0 0 5px 5px;border-left-color:#0D0;;bottom:-5px;}
+
+.digi .d7{  width:5px;height:14px;top:32px;right:0;}
+.digi .d7:before{ border-width:0 0 5px 5px;border-bottom-color:#0D0;;top:-5px;}
+.digi .d7:after{  border-width:5px 0 0 5px;border-top-color:#0D0;;bottom:-5px;}
+/* 轉變效果 */
+/* d1上 2中 3下 4左上 5右上 6左下 7右下 */
+.T0 .d1,.T0 .d3,.T0 .d4,.T0 .d5,.T0 .d6,.T0 .d7{
+  opacity:1;
+}
+.T1 .d5,.T1 .d7{
+  opacity:1;
+}
+.T2 .d1,.T2 .d5,.T2 .d2,.T2 .d6,.T2 .d3{
+  opacity:1;
+}
+.T3 .d1,.T3 .d5,.T3 .d2,.T3 .d7,.T3 .d3{
+  opacity:1;
+}
+.T4 .d5,.T4 .d2,.T4 .d4,.T4 .d7{
+  opacity:1;
+}
+.T5 .d1,.T5 .d2,.T5 .d4,.T5 .d3,.T5 .d7{
+  opacity:1;
+}
+.T6 .d1,.T6 .d2,.T6 .d4,.T6 .d3,.T6 .d6,.T6 .d7{
+  opacity:1;
+}
+.T7 .d1,.T7 .d5,.T7 .d7{
+  opacity:1;
+}
+.T8 .d1,.T8 .d2,.T8 .d3,.T8 .d4,.T8 .d5,.T8 .d6,.T8 .d7{
+  opacity:1;
+}
+.T9 .d1,.T9 .d2,.T9 .d3,.T9 .d4,.T9 .d5,.T9 .d7{
+  opacity:1;
+}
+/* 點點 */
+.digi .cc{
+  width:25px;
+  margin: 0;
+  padding: 0;
+}
+.digi div.cc:before,
+.digi div.cc:after{
+  background-color:#0D0;
+}
+.cc:before,.cc:after{
+  width:5px;
+  height:5px;
+  content:'';
+  position:absolute;
+  left:50%;
+  right: 50%;
+  top:14px;
+}
+
+.cc:after{
+  top:34px;
+}
+</style>
+<body>
+  <div class="bgimg">
+  <div id="clock">
+    <div class="display">
+      <div class="digi"></div>
+    </div>
+  </div>
+</div>
+
+  <script>
+    $(()=>{
+      let clock = $('#clock'),
+          digiNum='T0 T1 T2 T3 T4 T5 T6 T7 T8 T9'.split(' '),
+          digi={},
+          nowTime=[//時間顯示方式
+            'tc1','tc2',':','tc3','tc4',':','tc5','tc6'
+          ],
+          digiTime=clock.find('.digi');
+
+          $.each(nowTime,function(){
+            if(this==':'){
+              //冒號
+              digiTime.append('<div class="cc">')
+            }else{
+              //創造div
+              var makeDiv=$('<div>');
+                //七根
+                for(let i=1;i<8;i++){
+                  makeDiv.append('<span class="d' + i + '">');
+                    //單雙引號使i變數
+                }
+                //時間比對
+                digi[this] = makeDiv;
+                //產生的東西放到字串裡面
+                digiTime.append(makeDiv);
+            }
+          })
+
+      const refresh = () => {
+      const nt = new Date();
+      const
+      nh = nt.getHours(), //15
+      nm = nt.getMinutes(), //39
+      ns = nt.getSeconds(); //50
+      const
+        nk1 = Math.floor(nh / 10),
+        nk2 = nh % 10,
+        nk3 = Math.floor(nm / 10),
+        nk4 = nm % 10,
+        nk5 = Math.floor(ns / 10),
+        nk6 = ns % 10;
+
+        digi.tc1.attr('class',digiNum[`${nk1}`]);
+        digi.tc2.attr('class',digiNum[`${nk2}`]);
+        digi.tc3.attr('class',digiNum[`${nk3}`]);
+        digi.tc4.attr('class',digiNum[`${nk4}`]);
+        digi.tc5.attr('class',digiNum[`${nk5}`]);
+        digi.tc6.attr('class',digiNum[`${nk6}`]);
+        setInterval(refresh, 1000);
+          }
+          //一定要讓他在迴圈裡面跑，去外面就無效，無法賦予值
+          refresh();
+      });
+
+        //     if(time==1){
+    //       $('.up','.lup','ldown','.mid','.down').css("opacity","0");
+    //       $('.rup','.rdown').css('opacity','1');
+    //     }
+    //     if(time==2){
+    //       $('.lup','.rdown').css("opacity","0");
+    //       $('.up','.rup','.mid','ldown','.down').css('opacity','1');
+    //     }
+        // $(".ck1")
+      // document.getElementById("ck1").className = `mk${nk1}`;
+      // document.getElementById("ck2").className = `mk${nk2}`;
+      // document.getElementById("ck3").className = `mk${nk3}`;
+      // document.getElementById("ck4").className = `mk${nk4}`;
+      // document.getElementById("ck5").className = `mk${nk5}`;
+      // document.getElementById("ck6").className = `mk${nk6}`;
+
+      // document.getElementsByClassName("cc")[0].style.opacity = 1;
+      // document.getElementsByClassName("cc")[1].style.opacity = 1;
+      // setTimeout(() => {
+      //   document.getElementsByClassName("cc")[0].style.opacity = 0;
+      //   document.getElementsByClassName("cc")[1].style.opacity = 0;
+      // }, 500);
+
+
+
+      // document.querySelectorAll('.cc').forEach(e => {
+      //   e.style.opacity = 1;
+      //   setTimeout(() => {
+      //     e.style.opacity = 0;
+      //   }, 500);
+      // });
+      // setTimeout(refresh, 1000);
+    // }
+    // setInterval(refresh, 1000);
+
+
+
+
+  </script>
+</body>
+
+</html>
